@@ -12,15 +12,7 @@
         <span></span>
       </span>
       <div :class="menuItems">
-        <a class="nav-item is-active">
-          Home
-        </a>
-        <a class="nav-item">
-          Examples
-        </a>
-        <a class="nav-item">
-          Documentation
-        </a>
+        <slot></slot>
       </div>
     </div>
   </header>
