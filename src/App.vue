@@ -3,8 +3,9 @@
     <!-- Hero header: will stick at the top -->
     <div class="hero-head">
       <navigation>
-        <router-link class="nav-item" to="/foo">Go to Foo</router-link>
-        <router-link class="nav-item" to="/bar">Go to Bar</router-link>
+        <router-link class="nav-item" to="/">Home</router-link>
+        <router-link class="nav-item" to="/about">About</router-link>
+        <router-link class="nav-item" to="/contact">Contact</router-link>
       </navigation>
     </div>
     <!-- Hero content: will be in the middle -->
@@ -37,5 +38,6 @@ export default {
   a.nav-item:hover{ color: #fff; background: #38d9a9 }
 
   .nav-item.router-link-active{ color: #fff; background: #38d9a9 }
-  .nav-toggle.is-active { background: rgba(255, 255, 255, 0.41) }
+  .nav-toggle{ background: rgba(255, 255, 255, 0.41) }
+  .nav-toggle:hover{ background: rgba(255, 255, 255, 0.30) }
 </style>
