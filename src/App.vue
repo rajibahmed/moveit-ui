@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-success is-fullheight">
+  <section class="hero is-darkcyan is-fullheight">
     <!-- Hero header: will stick at the top -->
     <div class="hero-head">
       <navigation>
@@ -8,7 +8,7 @@
       </navigation>
     </div>
     <!-- Hero content: will be in the middle -->
-    <div class="hero-body">
+    <div class="hero-body is-lightcyan">
       <div class="container has-text-centered">
         <tansition name="fade" mode="out-in">
           <router-view class="view"></router-view>
@@ -29,5 +29,13 @@ export default {
 }
 </script>
 <style>
-  @import 'styles/main.css'
+  @import 'styles/main.css';
+  .is-darkcyan { background: #63e6be }
+  .is-lightcyan{ background: #e6fcf5 }
+
+  a.nav-item      { color: #fff; background: #63e6be }
+  a.nav-item:hover{ color: #fff; background: #38d9a9 }
+
+  .nav-item.router-link-active{ color: #fff; background: #38d9a9 }
+  .nav-toggle.is-active { background: rgba(255, 255, 255, 0.41) }
 </style>
