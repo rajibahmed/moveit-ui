@@ -11,7 +11,7 @@
     <!-- Hero content: will be in the middle -->
     <div class="hero-body is-lightcyan">
       <div class="container has-text-centered">
-        <tansition name="fade" mode="out-in">
+        <transition name="fade" mode="out-in">
           <router-view class="view"></router-view>
         </transition>
       </div>
@@ -40,4 +40,8 @@ export default {
   .nav-item.router-link-active{ color: #fff; background: #38d9a9 }
   .nav-toggle{ background: rgba(255, 255, 255, 0.41) }
   .nav-toggle:hover{ background: rgba(255, 255, 255, 0.30) }
+  .nav-toggle span{background: #38d9a9 }
+
+  .fade-enter-active, .fade-leave-active{ transition: all .2s ease }
+  .fade-enter, .fade-leave-active{ opacity: 0 }
 </style>
