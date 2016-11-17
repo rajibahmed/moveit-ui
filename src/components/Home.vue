@@ -1,6 +1,14 @@
 <template>
-  <div class="home">
-    <h1>{{ msg }}</h1>
+  <div class="home ">
+    <p class="control">
+      <input v-model.number="distance" type="range" min="0" max="1000">
+      <input v-model.number="volume" type="range" min="0" max="1000">
+    </p>
+    <p>{{ distance }}</p>
+    <p>{{ volume }}</p>
+    <p class="control">
+      <button class="button is-large is-primary">Calculate</button>
+    </p>
   </div>
 </template>
 
@@ -9,29 +17,11 @@ export default {
   name: 'home',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      distance: 0,
+      volume: 0
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
