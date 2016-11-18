@@ -14,12 +14,13 @@ describe('Home.vue', () => {
     const vm = new Vue(Home).$mount()
 
     expect(vm.distance).to.equal(0)
-    expect(vm.volume).to.equal(0)
-    expect(vm.hasPiano).to.equal(false)
+    expect(vm.volume_living).to.equal(0)
+    expect(vm.volume_storage).to.equal(0)
+    expect(vm.has_piano).to.equal(false)
   })
 
   it('should have a calculate button', () => {
-    const $el = getRenderedEl(Home,{})
-    expect($el.querySelector('button.button').textContent).to.equal('Calculate');
+    const $el = getRenderedEl(Home)
+    expect($el.querySelector('button.button').textContent).to.equal('Calculate')
   })
 })
