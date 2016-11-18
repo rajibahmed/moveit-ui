@@ -15,22 +15,32 @@
       </label>
       {{ hasPiano }}
     </p>
-    <button class="button is-large is-primary">Calculate</button>
+    <button @click="save()" class="button is-large is-primary">Calculate</button>
   </div>
 </template>
 
 <script>
+let store = window.localStorage
+
 export default {
   name: 'home',
   data () {
-    return {
+    let data = JSON.parse(store.getItem('data'))
+
+    return data || {
       distance: 0,
       volume: 0,
       hasPiano: false
     }
+  },
+  methods: {
+    save () {
+      store.setItem('data', JSON.stringify({
+        'distance': this.distance,
+        'volume': this.volume,
+        'hasPiano': this.hasPiano
+      }))
+    }
   }
 }
 </script>
-<style scoped>
-.home {max-width: 500px }
-</style>
