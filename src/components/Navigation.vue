@@ -2,7 +2,7 @@
   <header class="nav">
     <div class="container">
       <div class="nav-left">
-        <a class="nav-item">
+        <a class="nav-item" href="/">
           <img src="../assets/logo.png" alt="Logo">
         </a>
       </div>

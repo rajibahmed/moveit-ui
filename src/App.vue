@@ -3,7 +3,6 @@
     <!-- Hero header: will stick at the top -->
     <div class="hero-head">
       <navigation>
-        <router-link class="nav-item" to="/">Home</router-link>
         <router-link class="nav-item" to="/about">About</router-link>
         <router-link class="nav-item" to="/contact">Contact</router-link>
       </navigation>
@@ -31,11 +30,14 @@ export default {
 </script>
 <style>
   @import 'styles/main.css';
-  .is-darkcyan { background: #63e6be }
-  .is-lightcyan{ background: #e6fcf5 }
+  .hero-body{ background: url(assets/pattern.png)}
+  .is-darkcyan { background: #63e6be}
+  .is-lightcyan{ background: #e6fcf5; }
 
   a.nav-item      { color: #fff; background: #63e6be }
-  a.nav-item:hover{ color: #fff; background: #38d9a9 }
+  a.nav-item:hover{ color: #f2f2f2; background: #38d9a9; transition: all .3s ease }
+  .button{ transition: all .3s ease }
+  .button:hover{ color: #f2f2f2; transition: all .3s ease }
 
   .nav-item.router-link-active{ color: #fff; background: #38d9a9 }
   .nav-toggle{ background: rgba(255, 255, 255, 0.41) }
