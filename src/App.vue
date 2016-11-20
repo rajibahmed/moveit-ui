@@ -2,10 +2,7 @@
   <section class="hero is-darkcyan is-fullheight">
     <!-- Hero header: will stick at the top -->
     <div class="hero-head">
-      <navigation>
-        <router-link class="nav-item" to="/about">About</router-link>
-        <router-link class="nav-item" to="/contact">Contact</router-link>
-      </navigation>
+      <navigation></navigation>
     </div>
     <!-- Hero content: will be in the middle -->
     <div class="hero-body is-lightcyan">

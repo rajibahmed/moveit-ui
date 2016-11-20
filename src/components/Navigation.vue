@@ -2,9 +2,9 @@
   <header class="nav">
     <div class="container">
       <div class="nav-left">
-        <a class="nav-item" href="/">
+        <router-link class="nav-item" to="/top">
           <img src="../assets/logo.png" alt="Logo">
-        </a>
+        </router-link>
       </div>
       <span :class="menuIcon" @click="toggleMenu()">
         <span></span>
@@ -12,7 +12,8 @@
         <span></span>
       </span>
       <div :class="menuItems">
-        <slot></slot>
+        <router-link class="nav-item" to="/about">About</router-link>
+        <router-link class="nav-item" to="/contact">Contact</router-link>
       </div>
     </div>
   </header>

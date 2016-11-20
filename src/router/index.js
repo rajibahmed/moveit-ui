@@ -10,8 +10,9 @@ export default new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
-    { path: '/', component: Home },
+    { path: '/top', component: Home },
     { path: '/about', component: About },
-    { path: '/contact', component: Contact }
+    { path: '/contact', component: Contact },
+    { path: '/', redirect: '/top' }
   ]
 })
