@@ -30,7 +30,6 @@ export default {
 </script>
 <style>
   @import 'styles/main.css';
-  .hero-body{ background: url(assets/pattern.png)}
   .is-darkcyan { background: #63e6be}
   .is-lightcyan{ background: #e6fcf5; }
 
