@@ -2,7 +2,7 @@
   <header class="nav">
     <div class="container">
       <div class="nav-left">
-        <router-link class="nav-item" to="/top">
+        <router-link class="nav-item logo" to="/top">
           <img src="../assets/logo.png" alt="Logo">
         </router-link>
       </div>
@@ -48,3 +48,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+.nav-item.logo img{
+  padding-left: 10px;
+  width: 80px;
+}
+.logo.router-link-active{
+  background: none;
+}
+</style>
