@@ -1,6 +1,6 @@
 <template>
   <div class="home content">
-    <component :is="currentView"  ></component>
+    <component :is="currentView" ></component>
   </div>
 </template>
 
