@@ -1,6 +1,6 @@
 <template>
   <div class="home content">
-    <move-form v-if="show" />
+    <move-form v-on:saved="toggleShow" v-if="show" />
     <offer v-else/>
   </div>
 </template>
@@ -14,10 +14,13 @@ export default {
   components: { MoveForm, Offer },
   data () {
     return {
-      show: false
+      show: true
     }
   },
   methods: {
+    toggleShow () {
+      this.show = !this.show
+    }
   }
 }
 </script>

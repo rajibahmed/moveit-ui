@@ -46,6 +46,8 @@ export default {
         'volume_storage': this.volume_storage,
         'has_piano': this.has_piano
       }))
+
+      this.$emit('saved')
     }
   }
 }
