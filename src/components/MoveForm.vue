@@ -1,33 +1,38 @@
 <template>
-  <div class="content">
-    <p>
-      <input v-model.number="distance" type="range" min="0" max="1000">
-      <span>{{ distance }}</span>
-    </p>
-    <p>
-      <input v-model.number="volume_living" type="range" min="0" max="1000">
-      <span>{{ volume_living }}</span>
-    </p>
-    <p>
-      <input v-model.number="volume_storage" type="range" min="0" max="1000">
-      <span>{{ volume_storage }}</span>
-    </p>
-    <p>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <pretty-input labelName="Distance">
+        <input class="input" v-model.number="distance" type="number" min="0" max="10000">
+      </pretty-input>
+
+      <pretty-input labelName="Attic">
+        <input class="input" v-model.number="volume_living" type="number" min="0" max="1000">
+      </pretty-input>
+
+      <pretty-input labelName="Celler">
+        <input class="input" v-model.number="volume_storage" type="number" min="0" max="1000">
+      </pretty-input>
+
+      <p>
       <label class="checkbox">
-        <input v-model="has_piano" type="checkbox">
-        Have a Piano?
+        <input v-model="has_piano" type="checkbox"> Have a Piano?
       </label>
-      {{ has_piano }}
-    </p>
-    <button @click="save()" class="button is-large is-primary">Calculate</button>
+      </p>
+
+      <button @click="save()" class="button is-large is-primary">Calculate</button>
+    </div>
   </div>
 </template>
 
 <script>
+import PrettyInput from './PrettyInput'
+
 const store = window.localStorage
 
 export default {
   name: 'move-form',
+  props: ['distance-data'],
+  components: { PrettyInput },
   data () {
     let data = JSON.parse(store.getItem('data'))
 

@@ -1,18 +1,18 @@
 <template>
   <div class="home content">
-    <component :is="currentView"></component>
+    <component :is="currentView"  ></component>
   </div>
 </template>
 
 <script>
-import DistanceMap from './DistanceMap'
+import MoveForm from './MoveForm'
 
 export default {
   name: 'home',
   data () {
     return {
       show: true,
-      currentView: DistanceMap
+      currentView: MoveForm
     }
   },
   methods: {
