@@ -1,17 +1,17 @@
 <template>
   <div class="home content">
-    <move-form v-on:saved="toggleShow" v-if="show" />
-    <offer v-else/>
+    <component name="distance-map"></component>
   </div>
 </template>
 
 <script>
 import MoveForm from './MoveForm'
 import Offer from './Offer'
+import DistanceMap from './DistanceMap'
 
 export default {
   name: 'home',
-  components: { MoveForm, Offer },
+  components: { DistanceMap, MoveForm, Offer },
   data () {
     return {
       show: true
