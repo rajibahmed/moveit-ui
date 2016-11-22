@@ -3,21 +3,28 @@
     <h5 class="title is-4">Hi</h5>
     <p> Thank you for your inquiry! Our monkeys working on the server crunched number for you.</p>
 
-    <span class="tag is-success is-large">
-      55500 Kr
-    </span>
+    <div v-if="offer">
+      <span class="tag is-success is-large" >
+        {{ offer.price }}  Kr
+      </span>
 
-    <button @click="saveOffer()" :disable="sending" :class="[{ 'is-loading': sending }, 'button is-success is-medium' ]">{{ btnText }}</button>
+      <span class="tag is-success is-large">
+        http://localhost:3000/offer/{{ offer.id }}
+      </span>
 
-    <div class="information">
-      <h5 class="title is-5">Apartment <span>50m<sup>2</sup></span></h5>
-      <h5 class="title is-5">Celler <span>50m<sup>2</sup></span></h5>
-      <h5 class="title is-5">Attic <span>50m<sup>2</sup></span></h5>
+      <div class="information">
+        <h5 class="title is-5">Distance <span>{{ offer.distance }}m<sup>2</sup></span></h5>
+        <h5 class="title is-5">Apartment <span>{{ offer.living_space }}m<sup>2</sup></span></h5>
+        <h5 class="title is-5">Celler <span>{{ offer.celler }}m<sup>2</sup></span></h5>
+        <h5 class="title is-5">Attic <span>{{ offer.attic }}m<sup>2</sup></span></h5>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'offer',
   data () {
@@ -28,9 +35,23 @@ export default {
       btnText: 'Save Offer'
     }
   },
+  beforeMount () {
+    this.fetchOffer()
+  },
   methods: {
     saveOffer () {
       this.btnText = 'Sent'
+    },
+    fetchOffer () {
+      let vm = this
+      axios.get('http://localhost:3000/offers/' + vm.$route.params.id)
+        .then((response) => {
+          vm.offer = response.data
+        })
+        .catch((response) => {
+          console.log('error', response)
+          alert('error happend check console')
+        })
     }
   }
 }

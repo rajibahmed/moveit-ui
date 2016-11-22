@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../components/Home'
 import About from '../components/About'
 import Contact from '../components/Contact'
+import Offer from '../components/Offer'
 
 Vue.use(Router)
 
@@ -11,6 +12,7 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/top', component: Home },
+    { path: '/offer/:id', component: Offer },
     { path: '/about', component: About },
     { path: '/contact', component: Contact },
     { path: '/', redirect: '/top' }
