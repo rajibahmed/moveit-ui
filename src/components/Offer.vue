@@ -4,19 +4,21 @@
     <p> Thank you for your inquiry! Our monkeys working on the server crunched number for you.</p>
 
     <div v-if="offer">
-      <span class="tag is-success is-large" >
-        {{ offer.price }}  Kr
-      </span>
+      <div class="offer-main">
+        <span class="tag is-success is-large" >
+          {{ offer.price }}  Kr
+        </span>
 
-      <span class="tag is-success is-large">
-        http://localhost:3000/offer/{{ offer.id }}
-      </span>
+        <span class="tag is-success is-large">
+          http://localhost:3000/offer/{{ offer.id }}
+        </span>
+      </div>
 
       <div class="information">
-        <h5 class="title is-5">Distance <span>{{ offer.distance }}m<sup>2</sup></span></h5>
-        <h5 class="title is-5">Apartment <span>{{ offer.living_space }}m<sup>2</sup></span></h5>
-        <h5 class="title is-5">Celler <span>{{ offer.celler }}m<sup>2</sup></span></h5>
-        <h5 class="title is-5">Attic <span>{{ offer.attic }}m<sup>2</sup></span></h5>
+        <h5 class="title is-5">Distance <span>{{ offer.distance }} km</span></h5>
+        <h5 class="title is-5" >Apartment <span>{{ offer.living_space }}m<sup>2</sup></span></h5>
+        <h5 class="title is-5" v-if="offer.celler > 0">Celler <span>{{ offer.celler }}m<sup>2</sup></span></h5>
+        <h5 class="title is-5" v-if="offer.attic > 0" >Attic <span>{{ offer.attic }}m<sup>2</sup></span></h5>
       </div>
     </div>
   </div>
@@ -50,13 +52,16 @@ export default {
         })
         .catch((response) => {
           console.log('error', response)
-          alert('error happend check console')
+          window.alert('check console for errors')
         })
     }
   }
 }
 </script>
 <style scoped>
+   .offer-main { margin: 10px 0 }
+   .offer-main span { margin: 10px 5px }
+
   .information{
     margin-top: 10px;
     padding: 20px 10px 10px;
