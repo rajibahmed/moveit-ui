@@ -3,19 +3,25 @@
     <div class="column is-half is-offset-one-quarter">
 
       <div v-if="!submitted">
-        <pretty-input labelName="Email">
+        <div class="errors" v-for="error in errors">{{ error }}</div>
+
+        <pretty-input labelName="Email*">
           <input class="input" v-model="email" required>
         </pretty-input>
 
-        <pretty-input labelName="Distance">
+        <pretty-input labelName="Distance* (km)">
           <input class="input" v-model.number="distance" type="number" min="0" max="10000">
         </pretty-input>
 
-        <pretty-input labelName="Attic">
+        <pretty-input labelName="Apartment Size (sqm)">
+          <input class="input" v-model.number="living_space" type="number" min="0" max="10000">
+        </pretty-input>
+
+        <pretty-input labelName="Attic Size (sqm)">
           <input class="input" v-model.number="attic" type="number" min="0" max="1000">
         </pretty-input>
 
-        <pretty-input labelName="Celler">
+        <pretty-input labelName="Celler Size (sqm)">
           <input class="input" v-model.number="celler" type="number" min="0" max="1000">
         </pretty-input>
 
@@ -51,38 +57,36 @@ export default {
       attic: null,
       celler: null,
       hasPiano: false,
+      errors: null,
       submitted: false
     }
   },
   methods: {
-    save () {
-      store.setItem('data', JSON.stringify({
-        'distance': this.distance,
-        'attic': this.attic,
-        'celler': this.celler,
-        'hasPiano': this.hasPiano
-      }))
-    },
     postData () {
       return {
+        email: this.email,
         distance: this.distance,
         attic: this.attic,
         celler: this.celler,
         hasPiano: this.hasPiano
       }
     },
+    save () {
+      store.setItem('data', JSON.stringify(this.postData()))
+    },
     calculate () {
       let vm = this
+      vm.submitted = true
 
-      axios.post('http://localhost:3000/offers', this.postData())
+      axios.post('http://localhost:3000/offers', { offer: vm.postData() })
       .then((response) => {
-        console.log('success', response.data)
+        console.log(response)
         vm.save()
         vm.$emit('saved')
       })
       .catch((response) => {
-        vm.submitted = true
-        console.log('error', response.data)
+        console.log(response)
+        vm.errors = response.data.errors
       })
     }
   }
