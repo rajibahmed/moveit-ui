@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import MoveForm from './MoveForm'
+import DistanceMap from './DistanceMap'
 
 export default {
   name: 'home',
   data () {
     return {
       show: true,
-      currentView: MoveForm
+      currentView: DistanceMap
     }
   },
   methods: {

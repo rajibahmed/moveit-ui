@@ -16,6 +16,8 @@
 
 <script>
 import axios from 'axios'
+import router from '../router'
+let store = window.localStorage
 
 export default {
   name: 'distance-map',
@@ -32,14 +34,20 @@ export default {
 
       axios.get('http://localhost:3000/distance', {
         params: {
-          origin: this.origin,
-          destination: this.destination
+          origin: vm.origin,
+          destination: vm.destination
         }
       })
         .then((response) => {
-          vm.$emit('distance_found')
+          let realDistance = response.data.rows[0].elements[0].distance.value / 100
+
+          store.setItem('data', JSON.stringify({distance: realDistance}))
+          router.push({path: 'move'})
         })
-        .catch((response) => { vm.errors = response.data })
+        .catch((response) => {
+          console.log(response)
+          window.alert('error happened check console')
+        })
     }
   }
 }
