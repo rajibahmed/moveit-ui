@@ -12,7 +12,7 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/top', component: Home },
-    { path: '/offer/:id', component: Offer },
+    { path: '/offer/:id', name: 'offer', component: Offer },
     { path: '/about', component: About },
     { path: '/contact', component: Contact },
     { path: '/', redirect: '/top' }

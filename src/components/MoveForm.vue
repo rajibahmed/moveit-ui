@@ -40,6 +40,7 @@
 import PrettyInput from './PrettyInput'
 import LoadButton from './LoadButton'
 import Offer from './Offer'
+import router from '../router'
 import axios from 'axios'
 
 const store = window.localStorage
@@ -80,13 +81,10 @@ export default {
 
       axios.post('http://localhost:3000/offers', { offer: vm.postData() })
       .then((response) => {
-        console.log(response)
-        vm.save()
-        vm.$emit('saved')
+        router.push({name: 'offer', params: {id: response.data.id}})
       })
       .catch((response) => {
         console.log(response)
-        vm.errors = response.data.errors
       })
     }
   }
