@@ -1,15 +1,17 @@
 <template>
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
-      <p>
-        <input type="text" class="input" v-model="origin" placeholder="Start from">
-      </p>
-      <p>
-        <input type="text" class="input" v-model="destination" placeholder="Destiniation">
-      </p>
-      <p>
-        <button @click="distance()" class="button is-success is-large">Next</button>
-      </p>
+      <form v-on:submit.prevent>
+        <p>
+          <input required type="text" class="input" v-model="origin" placeholder="Start from*">
+        </p>
+        <p>
+          <input required type="text" class="input" v-model="destination" placeholder="Destination*">
+        </p>
+        <p>
+          <button @click="distance()" class="button is-success is-large">Next</button>
+        </p>
+      </form>
     </div>
   </div>
 </template>
@@ -30,6 +32,10 @@ export default {
   },
   methods: {
     distance () {
+      if (!this.origin || !this.destination) {
+        return
+      }
+
       let vm = this
 
       axios.get('http://localhost:3000/distance', {
