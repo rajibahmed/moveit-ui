@@ -1,5 +1,5 @@
 <template>
-  <button @click="changeState()" :class="[{ 'is-loading': loading }, 'button is-success is-medium' ]">{{ text }}</button>
+  <button @click="changeState()" :class="[{ 'noop': loading }, 'button is-success is-medium' ]">{{ text }}</button>
 </template>
 <script>
   export default {
