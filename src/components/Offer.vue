@@ -15,6 +15,7 @@
       </div>
 
       <div class="information">
+        <h5 class="title is-5"><span>{{ offer.origin }} - {{ offer.destination }} </span></h5>
         <h5 class="title is-5">Distance <span>{{ offer.distance }} km</span></h5>
         <h5 class="title is-5" v-if="offer.living_space > 0" >Apartment <span>{{ offer.living_space }}m<sup>2</sup></span></h5>
         <h5 class="title is-5" v-if="offer.celler > 0"       >Celler <span>{{ offer.celler }}m<sup>2</sup></span></h5>
