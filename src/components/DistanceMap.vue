@@ -24,13 +24,25 @@ let store = window.localStorage
 export default {
   name: 'distance-map',
   data () {
-    return {
+    let data = JSON.parse(store.getItem('data'))
+
+    return data || {
+      distance: null,
       origin: null,
-      destination: null,
-      errors: null
+      destination: null
     }
   },
   methods: {
+    queryData () {
+      return {
+        origin: this.origin,
+        destination: this.destination,
+        distance: this.distance
+      }
+    },
+    save () {
+      store.setItem('data', JSON.stringify(this.queryData()))
+    },
     distance () {
       if (!this.origin || !this.destination) {
         return
@@ -45,9 +57,8 @@ export default {
         }
       })
         .then((response) => {
-          let realDistance = response.data.rows[0].elements[0].distance.value / 100
-
-          store.setItem('data', JSON.stringify({distance: realDistance}))
+          vm.distance = response.data.rows[0].elements[0].distance.value / 1000
+          vm.save()
           router.push({path: 'move'})
         })
         .catch((response) => {

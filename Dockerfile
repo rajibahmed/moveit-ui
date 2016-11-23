@@ -1,6 +1,4 @@
-FROM nginx
-
-MAINTAINER "Yoel Monzon" <yoelfme@hotmail.com>
+FROM nginx:latest
 
 ENV APP_HOME /usr/share/nginx/html
 WORKDIR $APP_HOME

@@ -9,8 +9,8 @@
           {{ offer.price }}  Kr
         </span>
 
-        <span class="tag is-success is-large">
-          http://localhost:3000/offer/{{ offer.id }}
+        <span class="tag is-success is-large" >
+          <router-link class="button is-white" :to="offerUrl">Copy Link</router-link>
         </span>
       </div>
 
@@ -19,6 +19,7 @@
         <h5 class="title is-5" v-if="offer.living_space > 0" >Apartment <span>{{ offer.living_space }}m<sup>2</sup></span></h5>
         <h5 class="title is-5" v-if="offer.celler > 0"       >Celler <span>{{ offer.celler }}m<sup>2</sup></span></h5>
         <h5 class="title is-5" v-if="offer.attic > 0"        >Attic <span>{{ offer.attic }}m<sup>2</sup></span></h5>
+        <h5 class="title is-5" v-if="offer.has_piano"        >Have a nice piano too</h5>
       </div>
     </div>
   </div>
@@ -31,19 +32,18 @@ export default {
   name: 'offer',
   data () {
     return {
-      loding: true,
-      sending: false,
-      offer: null,
-      btnText: 'Save Offer'
+      offer: null
     }
   },
   beforeMount () {
     this.fetchOffer()
   },
+  computed: {
+    offerUrl () {
+      return '/offers/' + this.offer.id
+    }
+  },
   methods: {
-    saveOffer () {
-      this.btnText = 'Sent'
-    },
     fetchOffer () {
       let vm = this
       axios.get('http://localhost:3000/offers/' + vm.$route.params.id)
@@ -66,5 +66,18 @@ export default {
     margin-top: 10px;
     padding: 20px 10px 10px;
     background: rgba(35, 209, 96, 0.14);
+  }
+
+  .button.is-white{
+    color: #fff;
+    background-color: transparent;
+    border-color: transparent;
+    color: #0a0a0a;
+  }
+
+  .button.is-white:hover{
+    background-color: transparent;
+    border-color: transparent;
+    color: #0a0a0a;
   }
 </style>

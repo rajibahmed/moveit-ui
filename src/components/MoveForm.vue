@@ -53,13 +53,14 @@ export default {
     let data = JSON.parse(store.getItem('data'))
 
     return data || {
+      origin: null,
+      destination: null,
       email: null,
-      distance: this.distanceData,
+      distance: null,
       living_space: null,
       attic: null,
       celler: null,
-      hasPiano: false,
-      errors: null
+      hasPiano: false
     }
   },
   methods: {
@@ -70,7 +71,9 @@ export default {
         living_space: this.living_space,
         attic: this.attic,
         celler: this.celler,
-        hasPiano: this.hasPiano
+        has_piano: this.hasPiano,
+        origin: this.origin,
+        destination: this.destination
       }
     },
     save () {
