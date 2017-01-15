@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
-      <form v-on:submit.prevent>
+      <form v-on:submit.prevent accept-charset="utf-8">
         <p>
           <input required type="text" class="input" v-model="origin" placeholder="Start from*">
         </p>
@@ -9,7 +9,7 @@
           <input required type="text" class="input" v-model="destination" placeholder="Destination*">
         </p>
         <p>
-          <button @click="distance()" class="button is-success is-large">Next</button>
+          <button @click="distanceCalc()" class="button is-success is-large">Next</button>
         </p>
       </form>
     </div>
@@ -43,22 +43,16 @@ export default {
     save () {
       store.setItem('data', JSON.stringify(this.queryData()))
     },
-    distance () {
-      if (!this.origin || !this.destination) {
-        return
-      }
-
-      let vm = this
-
+    distanceCalc () {
       axios.get('http://localhost:3000/distance', {
         params: {
-          origin: vm.origin,
-          destination: vm.destination
+          origin: this.origin,
+          destination: this.destination
         }
       })
         .then((response) => {
-          vm.distance = response.data.rows[0].elements[0].distance.value / 1000
-          vm.save()
+          this.distance = response.data.rows[0].elements[0].distance.value / 1000
+          this.save()
           router.push({path: 'move'})
         })
         .catch((response) => {
